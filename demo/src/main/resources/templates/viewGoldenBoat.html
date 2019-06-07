@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Golden Boat</title>
+	<style>
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+</head>
+<body>
+<br>
+<br>
+<form action="#" th:action="@{/rest/staff/home/Bundesliga}" th:object="${teams}" method="post">
+    <table id="customers">
+		<tr></tr>
+		<tr></tr>
+		<tr>
+			<th>Player</th>
+			<th>Team</th>
+			<th>Goals</th>
+		</tr>
+        <tr th:each="player : ${players}">
+            <td><span th:text="${player.name}"> Name </span></td>
+			<td><span th:text="${player.team}"> Team </span></td>
+			<td><span th:text="${player.goals}"> Goals </span></td>
+        </tr>
+    </table>
+</body>
+</html>

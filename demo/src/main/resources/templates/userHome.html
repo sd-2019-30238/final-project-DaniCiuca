@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+	<style>
+	input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+</style>
+</head>
+<body>
+<br>
+<br>
+    <table align="center">
+		<form action="#" th:action="@{/rest/users/home/LaLiga}" method="get">
+		<tr align="center">
+            <td></td>
+            <td><input type="submit" value="View LaLiga Standings"></td>
+        </tr>
+		</form>
+		<form action="#" th:action="@{/rest/users/home/PremierLeague}" method="get">
+		<tr align="center">
+            <td></td>
+            <td><input type="submit" value="View Premier League Standings"></td>
+        </tr>
+		</form>
+		<form action="#" th:action="@{/rest/users/home/SerieA}" method="get">
+		<tr align="center">
+            <td></td>
+            <td><input type="submit" value="View Serie A Standings"></td>
+        </tr>
+		</form>
+		<form action="#" th:action="@{/rest/users/home/Bundesliga}" method="get">
+		<tr align="center">
+            <td></td>
+            <td><input type="submit" value="View Bundesliga Standings"></td>
+        </tr>
+		</form>
+		<form action="#" th:action="@{/rest/users/home/GoldenBoat}" method="get">
+		<tr align="center">
+            <td></td>
+            <td><input type="submit" value="View Golden Boat Standings"></td>
+        </tr>
+		</form>
+    </table>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<br>
+<br>
+
+    <table align="center">
+	<form action="#" th:action="@{/rest/staff/home}" method="post">
+        <tr>
+            <td>Team 1:</td>
+            <td><input type = "text" name="team1" placeholder="Team 1"></td>
+			<td><input type = "text" name="goals1" placeholder="Goals 1"></td>
+        </tr>
+		<tr>
+            <td>Team 2:</td>
+            <td><input type = "text" name="team2" placeholder="Team 2"></td>
+			<td><input type = "text" name="goals2" placeholder="Goals 2"></td>
+        </tr>
+        <tr align="center">
+            <td></td>
+            <td><input type="submit" value="Add match"></td>
+        </tr>
+		<tr></tr>
+		<tr></tr>
+	</form>
+	<form action="#" th:action="@{/rest/staff/add}" method="post">
+		<tr>
+			<td>Player:</td>
+			<td><input type = "text" name="player" placeholder="Player"></td>
+			<td><input type = "text" name="goals" placeholder="Goals"></td>
+		</tr>
+		<tr align="center">
+            <td></td>
+            <td><input type="submit" value="Add goals to Player"></td>
+        </tr>
+	</form>
+    </table>
+</body>
+</html>

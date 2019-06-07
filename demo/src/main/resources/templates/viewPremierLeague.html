@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Premier League</title>
+	<style>
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+</head>
+<body>
+<br>
+<br>
+<form action="#" th:action="@{/rest/staff/home/PremierLeague}" th:object="${teams}" method="post">
+    <table id="customers">
+		<tr></tr>
+		<tr></tr>
+		<tr>
+			<th>Team</th>
+			<th>Matches Played</th>
+			<th>Won</th>
+			<th>Drawn</th>
+			<th>Lost</th>
+			<th>GF</th>
+			<th>GA</th>
+			<th>Points</th>
+		</tr>
+        <tr th:each="team : ${teams}">
+            <td><span th:text="${team.name}"> Team </span></td>
+			<td><span th:text="${team.played}"> Matches Played </span></td>
+			<td><span th:text="${team.won}"> Won </span></td>
+			<td><span th:text="${team.drawn}"> Drawn </span></td>
+			<td><span th:text="${team.lost}"> Lost </span></td>
+			<td><span th:text="${team.gf}"> GF </span></td>
+			<td><span th:text="${team.ga}"> GA </span></td>
+			<td><span th:text="${team.points}"> Points </span></td>
+        </tr>
+    </table>
+</body>
+</html>
