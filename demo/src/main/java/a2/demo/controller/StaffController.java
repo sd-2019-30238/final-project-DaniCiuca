@@ -3,12 +3,21 @@ package a2.demo.controller;
 import a2.demo.model.Player;
 import a2.demo.model.Staff;
 import a2.demo.model.Team;
+import a2.demo.model.User;
 import a2.demo.repository.PlayerRepository;
 import a2.demo.repository.StaffRepository;
 import a2.demo.repository.TeamRepository;
+import a2.demo.repository.UserRepository;
+import a2.demo.service.EmailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.ArrayList;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 
 
 @RestController
@@ -22,6 +31,12 @@ public class StaffController {
 
     @Autowired
     PlayerRepository playerRepository;
+
+    @Autowired
+    UserRepository userRepository;
+
+    @Autowired
+    EmailServiceImpl emailService;
 
     @GetMapping("/login")
     public ModelAndView displayLoginPage()
@@ -52,12 +67,18 @@ public class StaffController {
     @PostMapping("/add")
     public ModelAndView addGoals(String goals, String player)
     {
+        List<User> users = userRepository.findAll();
         if(playerRepository.existsById(player))
         {
             Player p = playerRepository.findById(player).get();
             int g = Integer.parseInt(goals);
             p.setGoals(p.getGoals()+g);
             playerRepository.save(p);
+            for(User u : users) {
+                if(u.getEmail()!=null) {
+                    emailService.sendMail(u.getEmail(),p.getName()+" has scored!",p.getName()+" has scored "+g+" goals today!");
+                }
+            }
         }
         return new ModelAndView("redirect:/rest/staff/home");
     }
@@ -97,6 +118,12 @@ public class StaffController {
             }
             teamRepository.save(t1);
             teamRepository.save(t2);
+            List<User> users = userRepository.findAll();
+            for(User u : users) {
+                if(u.getEmail()!=null) {
+                    emailService.sendMail(u.getEmail(),team1+" - "+team2+" has finished!","The result was:\n"+team1+" "+g1+" : "+g2+" "+team2);
+                }
+            }
         }
         ModelAndView modelAndView = new ModelAndView("staffHome");
         return modelAndView;

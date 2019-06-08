@@ -1,6 +1,9 @@
 package a2.demo;
 
 import a2.demo.model.User;
+import a2.demo.repository.PlayerRepository;
+import a2.demo.repository.TeamRepository;
+import a2.demo.repository.UserRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,45 +16,27 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DataJpaTest
 public class DemoApplicationTests {
 
-	/*@Autowired
-	private UserWriteRepository userRepository;
+	@Autowired
+	private PlayerRepository playerRepository;
 
 	@Autowired
-	private BookWriteRepository bookRepository;
+	private TeamRepository teamRepository;
 
 	@Autowired
-	private StaffWriteRepository staffRepository;
+	private UserRepository userRepository;
 
 	@Test
 	public void addUser() {
 		User user = new User();
 		user.setUsername("test1");
 		user.setPassword("test1");
-		user.setPaymentMethod("Day");
+		user.setEmail("test@gmail.com");
 		userRepository.save(user);
 
 		User userFind = userRepository.findById("test1").get();
 
 		assertThat(user.getUsername()).isEqualTo(userFind.getUsername());
 	}
-
-	/*@Test
-	public void addUserCommand()
-	{
-		User event=new RegisterUser();
-		user.setUsername("test1");
-		user.setPassword("test1");
-		user.setPaymentMethod("Day");
-
-		ICommandHandler handler = new RegisterUserCommandHandler();
-		Mediator mediator = new Mediator();
-		mediator.addHandler(handler);
-		mediator.mediate(event);
-
-		User userFind = userRepository.findById("test1").get();
-
-		assertThat(user.getUsername()).isEqualTo(userFind.getUsername());
-	}*/
 
 	/*@Test
 	public void acceptUser()
